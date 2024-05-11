@@ -1,6 +1,7 @@
 const cursor = document.querySelector('.cursor');
 const a = document.querySelectorAll('a');
 const body = document.querySelector('body');
+cursor.classList.add('hidden');
 body.addEventListener('mouseout',()=>{
 	cursor.classList.add('hidden');
 });
