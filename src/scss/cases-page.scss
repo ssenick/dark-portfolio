@@ -1,0 +1,70 @@
+.page {
+	// .page_cases
+	&_cases {
+		.content-block__main {
+			display: grid;
+		}
+		.content-block {
+			position: relative;
+			margin: 0 !important;
+			display: flex;
+			align-items: start;
+			@media (max-width: $mobile) {
+				display: block;
+			}
+		}
+	}
+}
+
+.cases-list {
+	display: grid;
+	// .cases-list__item
+	&__item {
+		@media (any-hover: hover) {
+			&:hover {
+				.cases-list__image {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+	}
+
+	// .cases-list__link
+	&__link {
+		display: block;
+		padding-top: rem(16);
+		padding-bottom: rem(17);
+		padding-left: rem(17);
+		@include adaptiveValue("padding-right", 64, 17, 0, 1440, 393);
+		font-size: rem(24);
+		line-height: rem(32);
+		letter-spacing: -0.02em;
+	}
+
+	// .cases-list__image
+	&__image {
+		position: relative;
+		@include adaptiveValue("width", 337, 179, 0, 1440, 700);
+		@include adaptiveValue("height", 528, 265.5, 0, 1440, 700);
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+		}
+		@media (max-width: $mobile) {
+			display: none;
+		}
+	}
+	// .cases-list__image-ibg
+	&__image-ibg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}

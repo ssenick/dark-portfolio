@@ -1,0 +1,29 @@
+* {
+	cursor: none !important; 
+}
+.cursor {
+	width: 24px;
+	height: 24px;
+	background-color: rgba(255, 255, 255, 0.16);
+	border: 1px solid rgba(255, 255, 255, 0.96);
+	border-radius: 50%;
+	position: fixed;
+	pointer-events: none;
+	z-index: 1000;
+	transition: width 0.3s ease 0s, height 0.3s ease 0s, background-color 0.3s ease 0s;
+	&.hover {
+		background-color: rgba(30, 30, 29, 0.7);
+	}
+	.touch & {
+		display: none;
+	}
+	&.hidden{
+		opacity: 0;
+	}
+	&.click {
+		width: 16px;
+		height: 16px;
+		background-color: rgba(255, 255, 255, 0.5);
+		transition: width 0.1s ease 0s, height 0.1s ease 0s, background-color 0.1s ease 0s;
+	}
+}

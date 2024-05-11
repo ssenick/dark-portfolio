@@ -1,0 +1,64 @@
+<head>
+	<title>@@title</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.loader-visual {
+			align-items: center;
+			color: #fff;
+			display: flex;
+			left: 0;
+			justify-content: center;
+			opacity: 1;
+			position: fixed;
+			pointer-events: auto;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 1000;
+			transition: all .8s cubic-bezier(.645, .045, .355, 1), scale 1s cubic-bezier(.645, .045, .355, 1);
+			background-color: #1e1e1d;
+		}
+
+		.loader-visual.is-hidden {
+			opacity: 0;
+			pointer-events: none;
+			visibility: hidden;
+			transform: scale(5);
+			will-change: scale;
+		}
+
+		.loader-visual__logo {
+			position: relative;
+			height: auto;
+			max-width: 80vw;
+			width: 560px;
+		}
+
+		.loader-visual__logo img {
+			height: auto;
+			width: 100%;
+		}
+
+		.loader-visual__logo img:first-child {
+			opacity: .3;
+		}
+
+		.loader-visual__logo img:last-child {
+			-webkit-clip-path: polygon(0 0, var(--progress, 0) 0, var(--progress, 0) 100%, 0 100%);
+			clip-path: polygon(0 0, var(--progress, 0) 0, var(--progress, 0) 100%, 0 100%);
+			left: 0;
+			top: 0;
+			position: absolute;
+			width: 100%;
+			transition: -webkit-clip-path .2s cubic-bezier(.645, .045, .355, 1);
+			transition: clip-path .2s cubic-bezier(.645, .045, .355, 1);
+			transition: clip-path .2s cubic-bezier(.645, .045, .355, 1), -webkit-clip-path .2s cubic-bezier(.645, .045, .355, 1);
+		}
+	</style>
+</head>

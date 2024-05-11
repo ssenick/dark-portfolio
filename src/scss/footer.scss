@@ -1,0 +1,42 @@
+//====================================================================================================
+.footer {
+	padding-top: rem(20);
+	// .footer__container
+	&__container {
+	}
+	// .footer__wrapper
+	&__wrapper {
+		position: relative;
+		@extend .marginLeft;
+		@include adaptiveValue("padding-bottom", 60, 36, 0, 1440, 393);
+		@media (max-width: $mobile) {
+			margin: 0 !important;
+		}
+	}
+	// .footer__name
+	&__name {
+		display: none;
+		font-weight: 500;
+		@include adaptiveValue("font-size", 132, 64, 0, 1440, 393);
+		line-height: math.div(156px, 132px) * 100%;
+		text-align: right;
+		@include adaptiveValue("padding-right", 17, 0);
+		letter-spacing: -0.04em;
+		.animation {
+			span {
+				padding-right: rem(4);
+			}
+		}
+		@media (max-width: $mobile) {
+			// line-height: 1;
+		}
+		@media (max-width: em(360)) {
+			font-size: rem(55);
+		}
+		&._active {
+			display: block;
+		}
+	}
+}
+
+//====================================================================================================

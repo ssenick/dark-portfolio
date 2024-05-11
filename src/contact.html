@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/_head.htm',{
+"title":"Contact"
+})
+
+<body>
+	<div id="loaderPrecent" class="loader-visual ">
+		<div class="loader-visual__logo"><img src="@img/logo-opacity.svg" width="230" alt=""><img src="@img/logo.svg" width="230" alt=""></div>
+	</div>
+	<div class="cursor"></div>
+	<div data-fullscreen class="wrapper wrapper_full">
+
+		@@include('html/_header.htm',{
+		"home":"",
+		"cases":"",
+		"about":"",
+		"contact":"_active"
+		})
+		<main class="page page_contact">
+			<div class="page__container">
+
+				<div class="page__main main-block">
+					<div class="main-block__header">
+						<div class="line left bottom width"></div>
+						<a href="index.html" data-opacity-text class="main-block__is">is</a>
+						<h1 data-opacity-text class="main-block__title ">Contact</h1>
+					</div>
+					<div class="main-block__content content-block relative">
+						<div class="line left top height"></div>
+						<div class="line right top height"></div>
+						<div class="content-block__main contact-content-block ">
+							<div data-opacity-text class="contact-content-block__text">
+								I’m always open for new connections. If you have any questions you could contact me by:
+							</div>
+							<ul class="contact-content-block__list">
+								<li class="contact-content-block__item"><a data-opacity-text href="tel:+905345298264" class="contact-content-block__link link">+905345298264</a></li>
+								<li class="contact-content-block__item"><a data-opacity-text href="mailto:igorsokoltsov@gmail.com" class="contact-content-block__link link">igorsokoltsov@gmail.com</a></li>
+							</ul>
+						</div>
+						<div class="line left bottom width"></div>
+						<div class="content-block__info relative">
+							<div class="line left top height"></div>
+							<div class="socials">
+								<ul class="socials__list">
+									<li><a data-opacity-text href="#" class="socials__link link">Facebook</a></li>
+									<li><a data-opacity-text href="#" class="socials__link link">Linkedin</a></li>
+									<li><a data-opacity-text href="#" class="socials__link link">Instagram</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</main>
+		@@include('html/_footer.htm',{
+		"home":""
+		})
+
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

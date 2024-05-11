@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/_head.htm',{
+"title":"Cases"
+})
+
+<body>
+	<div id="loaderPrecent" class="loader-visual ">
+		<div class="loader-visual__logo"><img src="@img/logo-opacity.svg" width="230" alt=""><img src="@img/logo.svg" width="230" alt=""></div>
+	</div>
+	<div class="cursor"></div>
+	<div data-fullscreen class="wrapper wrapper_cases wrapper_full">
+
+		@@include('html/_header.htm',{
+		"home":"",
+		"cases":"_active",
+		"about":"",
+		"contact":""
+		})
+		<main class="page page_cases">
+			<div class="page__container">
+
+				<div class="page__main main-block">
+					<div class="main-block__header">
+						<div class="line left bottom width"></div>
+						<a href="index.html" data-opacity-text class="main-block__is">is</a>
+						<h1 data-opacity-text class="main-block__title ">Cases</h1>
+					</div>
+					<div class="main-block__content content-block relative">
+
+						<div class="content-block__image-block">
+							<div class="content-block__image">
+
+							</div>
+						</div>
+						<div class="content-block__wrapper relative">
+							<div class="line top left height"></div>
+							<div class="line top right height"></div>
+							<div class="line bottom left width"></div>
+							<div class="content-block__main  ">
+								<ul data-hover-parent class="cases-list">
+									<li class="cases-list__item relative">
+										<div class="line left bottom width"></div>
+										<a href="case.html" data-hover-target class="cases-list__link ">
+											<img hidden src="@img/cases/01.jpg" alt="image">
+											<span data-opacity-text data-hover-content>Switch Design System (TBD)</span>
+										</a>
+									</li>
+									<li class="cases-list__item relative">
+										<div class="line left bottom width"></div>
+										<a data-hover-target href="case.html" class="cases-list__link ">
+
+											<img hidden src="@img/cases/02.jpg" alt="image">
+											<span data-opacity-text data-hover-content>Twitch Extension</span>
+										</a>
+									</li>
+									<li class="cases-list__item relative">
+										<div class="line left bottom width"></div>
+
+										<a data-hover-target href="case.html" class="cases-list__link ">
+
+											<img hidden src="@img/cases/01.jpg" alt="image">
+											<span data-opacity-text data-hover-content>Babka</span>
+										</a>
+									</li>
+									<li class="cases-list__item relative">
+										<div class="line left bottom width"></div>
+										<a data-hover-target href="case.html" class="cases-list__link ">
+											<img hidden src="@img/cases/02.jpg" alt="image">
+											<span data-opacity-text data-hover-content>Virtual Mate (TBD)</span>
+										</a>
+									</li>
+
+								</ul>
+							</div>
+							<div class="content-block__info relative">
+								<div class="line left top height mmd3"></div>
+								<div class="socials">
+									<ul class="socials__list">
+										<li><a data-opacity-text href="#" class="socials__link link">Linkedin</a></li>
+										<li><a data-opacity-text href="#" class="socials__link link">Facebook</a></li>
+										<li><a data-opacity-text href="#" class="socials__link link">Instagram</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
+		</main>
+		@@include('html/_footer.htm',{
+		"home": ""
+		})
+
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

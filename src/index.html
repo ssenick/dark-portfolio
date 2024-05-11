@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/_head.htm',{
+"title":"Home"
+})
+
+<body>
+	<div id="loaderPrecent" class="loader-visual ">
+		<div class="loader-visual__logo"><img src="@img/logo-opacity.svg" width="230" alt=""><img src="@img/logo.svg" width="230" alt=""></div>
+	</div>
+	<div class="cursor"></div>
+	<div data-fullscreen class="wrapper wrapper_full">
+
+		@@include('html/_header.htm',{
+		"home":"_active",
+		"cases":"",
+		"about":"",
+		"contact":""
+		})
+		<main class="page page_home">
+			<div class="page__container">
+
+				<div class="page__main main-block">
+					<div class="main-block__header">
+
+						<div class="line left bottom width"></div>
+						<a href="index.html" data-opacity-text class="main-block__is">is</a>
+						<h1 data-opacity-text class="main-block__title ">Design System Manager</h1>
+					</div>
+					<div class="main-block__content content-block relative">
+						<div class="line left top height"></div>
+						<div class="line left bottom width"></div>
+						<div class="line right top height"></div>
+
+						<div data-opacity-text class="content-block__main description-content-block ">
+
+							<p>Design system manager with over 5 years of experience building digital products and leading design initiatives.</p>
+						</div>
+						<div class="content-block__info relative">
+							<div class="line left top height"></div>
+							<div class="socials">
+								<ul class="socials__list">
+									<li><a data-opacity-text href="#" class="socials__link link">Facebook</a></li>
+									<li><a data-opacity-text href="#" class="socials__link link">Linkedin</a></li>
+									<li><a data-opacity-text href="#" class="socials__link link">Instagram</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="content-block__footer footer-content-block relative">
+							<div class="line left top width"></div>
+							<div class="footer-content-block__about"><span data-opacity-text>Currently design system manager at </span><a data-opacity-text href="#" class="link">Xsolla</a><span data-opacity-text>.</span></div>
+							<div class="footer-content-block__location relative">
+								<div class="line left top height"></div>
+								<span data-opacity-text>Based in Mersin, Turkiye.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</main>
+		@@include('html/_footer.htm',{
+		"home":"_active"
+		})
+
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

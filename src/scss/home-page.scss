@@ -1,0 +1,126 @@
+.page {
+	&_home {
+		@media (max-width: $mobile) {
+			.footer-content-block__about {
+				.animation span {
+					transition-delay: 1.4s !important;
+				}
+			}
+			.footer-content-block__location {
+				.animation span {
+					transition-delay: 1.5s !important;
+				}
+			}
+			.socials__list {
+				li {
+					&:nth-child(1) {
+						.animation span {
+							transition-delay: 1.6s !important;
+						}
+					}
+					&:nth-child(2) {
+						.animation span {
+							transition-delay: 1.7s !important;
+						}
+					}
+					&:nth-child(3) {
+						.animation span {
+							transition-delay: 1.8s !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.main-block {
+	// .main-block__header
+	&__header {
+		position: relative;
+		@include adaptiveValue("padding-top", 16, 20, 0, 1440, 393);
+		@include adaptiveValue("padding-bottom", 16, 20, 0, 1440, 393);
+	}
+	// .main-block__is
+	&__is {
+		@extend .title;
+		margin-right: auto;
+		position: absolute;
+		left: rem(17);
+		text-transform: uppercase;
+		.animation {
+			span {
+				padding-right: rem(1);
+			}
+		}
+
+	}
+	// .main-block__title
+	&__title {
+		@extend .title;
+		@extend .marginLeft;
+		padding-left: rem(16);
+		.animation {
+			span {
+				padding-right: rem(17);
+			}
+		}
+		text-transform: capitalize;
+		@media (max-width: $mobile) {
+			text-align: right;
+			padding-left: rem(55);
+		}
+	}
+	// .main-block__content
+	&__content {
+		@extend .marginLeft;
+		display: grid;
+		grid-template-columns: 1fr 33.333%;
+		min-height: rem(264);
+		@media (max-width: $mobile) {
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
+			margin: 0 !important;
+			.content-block__main {
+				order: 1;
+			}
+			.content-block__info {
+				order: 3;
+				.line {
+					top: 0;
+					height: rem(1);
+					width: 0;
+					.loaded & {
+						width: 100%;
+						transition: width 1s 0s cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+				}
+			}
+			.content-block__footer {
+				grid-column: span 1;
+				order: 2;
+			}
+			.socials__list {
+				li {
+					&:nth-child(1) {
+						.socials__link {
+							transition-delay: 1.35s !important;
+						}
+					}
+					&:nth-child(2) {
+						.socials__link {
+							transition-delay: 1.4s !important;
+						}
+					}
+					&:nth-child(3) {
+						.socials__link {
+							transition-delay: 1.45s !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	// .main-block__experience
+	&__experience {
+	}
+}

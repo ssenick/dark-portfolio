@@ -1,0 +1,543 @@
+@use "sass:math";
+
+// Подключение миксинов ===========================================================================================================================================================================================================================================================================
+@import "base/mixins";
+
+// Подключение шрифтов ===========================================================================================================================================================================================================================================================================
+//&display=swap - добавить при подключении через плагин
+
+// Подключить если есть локальные файлы шрифтов
+//@import "fonts/fonts";
+
+// Подключение иконочных шрифтов ==============================================================================================================================================================================================================================================================================
+// Подключить если есть файл иконочного шрифта
+//@import "fonts/icons";
+
+// ============================================================================================================================================================================================================================================================================================================================================================================================
+// Настройки шаблона ============================================================================================================================================================================================================================================================================================================================================================================================
+// ============================================================================================================================================================================================================================================================================================================================================================================================
+
+// Шрифт по умолчанию ==============================================================================================================================================================================================================================================================================
+$fontFamily: "Helvetica Neue";
+$fontSize: rem(16); // где 14(px) - размер шрифта по умолчанию из макета
+
+// Основные цвета
+$mainColor: rgba(255, 255, 255, 0.96); // Цвет шрифта по умолчанию
+$bg: #1e1e1d;
+$hover: rgba(255, 255, 255, 0.7);
+// Настройки адаптивной сетки ===============================================================================================================================================================================================================================================================================================
+
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1440;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 0;
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 30;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em(1439.98); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: em(767.98); // Телефоны L
+$mobileSmall: em(479.98); // Телефоны S
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// ============================================================================================================================================================================================================================================================================================================================================================================================
+// ============================================================================================================================================================================================================================================================================================================================================================================================
+
+// Обнуление ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
+@import "base/null";
+@import "kursor";
+// Стили тега BODY ============================================================================================================================================================================================================================================================================================================================================================================================
+
+body {
+	font-weight: 500;
+	line-height: rem(24);
+	@include adaptiveValue("font-size", 16, 18, 0, 1440, 393);
+	background-color: $bg;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background: #3C3C3C;
+		&:hover{
+			background: #4d4d4d;
+		}
+	}
+
+	@media (max-width: $mobile) {
+		line-height: rem(26);
+	}
+
+	// Скролл заблокирован
+	.lock & {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+	// Сайт загружен
+	.loaded & {
+	}
+}
+
+// Оболочка wrapper ============================================================================================================================================================================================================================================================================================================================================================================================================================================
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	&_full {
+		min-height: auto;
+		min-height: 100vh;
+		// overflow: visible;
+	}
+
+	&_an-page {
+		[data-watch] {
+			.line.width {
+				width: 0;
+			}
+			.line.height {
+				height: 0;
+			}
+			[data-hover-target]._active {
+				background-color: transparent;
+			}
+			[data-opacity-text] {
+				&::after {
+					opacity: 0;
+					transform: translateY(900%);
+					transition: all 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+				}
+				.animation {
+					span {
+						transform: translateY(300%);
+						transition: transform 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+					}
+				}
+			}
+			[data-opacity-image] {
+				opacity: 0;
+				transform: scale(0.95);
+			}
+			&._watcher-view {
+				.line.width {
+					width: 100%;
+					transition: width 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+				}
+				.line.height {
+					height: 100%;
+					transition: height 1s 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+				}
+				[data-hover-target]._active {
+					background-color: $mainColor;
+					transition: all 1s 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+				}
+				[data-opacity-text] {
+					&::after {
+						opacity: 1;
+						transform: translateY(0%);
+						transition: all 1.1s cubic-bezier(0.23, 1, 0.32, 1) 1s !important;
+					}
+					.animation {
+						span {
+							transform: translateY(0%);
+							transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 0.8s !important;
+						}
+					}
+				}
+				[data-opacity-image] {
+					opacity: 1;
+					transform: scale(1);
+					transition: all 1.5s 0.9s cubic-bezier(0.215, 0.61, 0.355, 1);
+				}
+				.main-block__title {
+					.animation {
+						span {
+							transform: translateY(0%);
+							transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 0.9s !important;
+						}
+					}
+				}
+				.body-content-block__description {
+					p {
+						&:nth-child(1) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1s !important;
+								}
+							}
+						}
+						&:nth-child(2) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.1s !important;
+								}
+							}
+						}
+						&:nth-child(3) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.2s !important;
+								}
+							}
+						}
+						&:nth-child(4) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.3s !important;
+								}
+							}
+						}
+					}
+				}
+				.download__btn {
+					.animation {
+						span {
+							transform: translateY(0%);
+							transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.4s !important;
+						}
+					}
+				}
+				.body-content-block__info .socials__list {
+					li {
+						&:nth-child(1) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.5s !important;
+								}
+							}
+						}
+						&:nth-child(2) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.6s !important;
+								}
+							}
+						}
+						&:nth-child(3) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.7s !important;
+								}
+							}
+						}
+					}
+				}
+				.content-item-experience__subtitle {
+					.animation {
+						span {
+							transform: translateY(0%);
+							transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 0.9s !important;
+						}
+					}
+				}
+
+				.description {
+					p {
+						&:nth-child(1) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1s !important;
+								}
+							}
+						}
+						&:nth-child(2) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.1s !important;
+								}
+							}
+						}
+						&:nth-child(3) {
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.2s !important;
+								}
+							}
+						}
+					}
+				}
+				h4.content-item-experience__title {
+					.animation {
+						span {
+							transform: translateY(0%);
+							transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.2s !important;
+						}
+					}
+				}
+				.content-item-experience__list {
+					li {
+						&:nth-child(1) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 1.8s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.2s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.2s !important;
+								}
+							}
+						}
+						&:nth-child(2) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 1.9s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.3s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.3s !important;
+								}
+							}
+						}
+						&:nth-child(3) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.4s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.4s !important;
+								}
+							}
+						}
+						&:nth-child(4) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.1s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.5s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.5s !important;
+								}
+							}
+						}
+						&:nth-child(5) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.2s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.6s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.6s !important;
+								}
+							}
+						}
+						&:nth-child(6) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.3s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.7s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.7s !important;
+								}
+							}
+						}
+						&:nth-child(7) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.4s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.7s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.8s !important;
+								}
+							}
+						}
+						&:nth-child(8) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.5s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.7s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.9s !important;
+								}
+							}
+						}
+						&:nth-child(9) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.6s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.7s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 2s !important;
+								}
+							}
+						}
+						&:nth-child(10) {
+							&::after {
+								opacity: 1;
+								transform: translateY(0%);
+								transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.7s,
+									transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 1.7s !important;
+							}
+							.animation {
+								span {
+									transform: translateY(0%);
+									transition: transform 2.1s cubic-bezier(0.23, 1, 0.32, 1) 2.1s !important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Прижимаем footer
+	> main {
+		flex: 1 1 auto;
+	}
+	// Фикс для слайдеров
+	> * {
+		min-width: 0;
+	}
+	.page {
+		overflow: visible;
+		margin-bottom: rem(114);
+
+		// .page_full
+		&_full {
+			// display: grid;
+		}
+		// .page_cases
+		&_cases {
+			margin-bottom: rem(40);
+		}
+		// .page_contact
+		&_contact {
+		}
+
+		// .page__container
+		&__container {
+		}
+		// .page__main
+		&__main {
+		}
+	}
+}
+
+// Ограничивающий контейнер ======================================================================================================================================================================================================================
+
+/*
+(i) Стили будут применяться ко
+всем классам содержащим *__container
+Например header__container, main__container и т.д.
+Снипет (HTML): cnt
+*/
+@if ($responsiveType==1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: rem($containerWidth);
+			padding-left: rem(15);
+			padding-right: rem(15);
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			@if ($maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			} @else {
+				// @include adaptiveValue("padding-left", math.div($containerPadding, 2), 15);
+				// @include adaptiveValue("padding-right", math.div($containerPadding, 2), 15);
+				padding-left: rem(15);
+				padding-right: rem(15);
+			}
+		}
+	}
+} @else {
+	// По брейк-поинтам
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: rem($containerWidth);
+		} @else {
+			@if ($containerPadding>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: rem(970);
+		}
+		@media (max-width: $tablet) {
+			max-width: rem(750);
+		}
+		@media (max-width: $mobile) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+	}
+}
+
+// Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
+// Для подключения/отключения конкретных стилей смотри base.scss
+@import "base";
+@import "lines";
+// Подключение стилей общих элементов проекта
+@import "common";
+
+// Подключение стилей отдельных блоков
+@import "header";
+@import "footer";
+
+// Подключение стилей отдельных страниц
+@import "home-page";
+@import "cases-page";
+@import "case-page";
+@import "about-page";
+@import "contact-page";
