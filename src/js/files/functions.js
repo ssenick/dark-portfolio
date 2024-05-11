@@ -47,7 +47,8 @@ export function addTouchClass() {
 export function preloader() {
   const images = document.images,
     imagesTotalCount = images.length,
-    percDisplay = document.querySelector('#loaderPrecent');
+    percDisplay = document.querySelector('#loaderPrecent'),
+     cursor = document.querySelector('.cursor')
   let imagesLoadedCount = 0;
 
   for (let i = 0; i < imagesTotalCount; i++) {
@@ -66,6 +67,7 @@ export function preloader() {
         if (menuAfter) menuAfter.style.cssText = `animation-duration: 0s;`;
         setTimeout(function () {
           percDisplay.classList.add('is-hidden');
+          cursor.classList.add('active')
         }, 500);
         setTimeout(function () {
           document.documentElement.classList.add('loaded');

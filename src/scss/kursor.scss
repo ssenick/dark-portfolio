@@ -1,5 +1,5 @@
 * {
-	cursor: none !important; 
+	cursor: none !important;
 }
 .cursor {
 	width: 24px;
@@ -9,8 +9,13 @@
 	border-radius: 50%;
 	position: fixed;
 	pointer-events: none;
+	opacity: 0;
 	z-index: 1000;
 	transition: width 0.3s ease 0s, height 0.3s ease 0s, background-color 0.3s ease 0s;
+	&.active{
+	  opacity: 1;
+		transition: width 0.3s ease 0s, height 0.3s ease 0s, background-color 0.3s ease 0s, opacity 0.3s ease-in 0.3s;
+	}
 	&.hover {
 		background-color: rgba(30, 30, 29, 0.7);
 	}
